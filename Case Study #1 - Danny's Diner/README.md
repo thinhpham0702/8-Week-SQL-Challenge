@@ -10,7 +10,7 @@ Please keep in mind that all information about the case study has been derived f
 
 ***
 
-## Business Task
+## 🎯 Business Task
 - How much did Danny's customers spend?
 - Which menu items are their favorite?
 - Should Danny expand existing customer loyalty program?
