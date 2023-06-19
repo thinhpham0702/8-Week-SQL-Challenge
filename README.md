@@ -6,3 +6,4 @@ I would like to send a big thank you to [Data With Danny](https://www.linkedin.c
 
 ## :books: Table of Contents
 
+- [Case Study #1 - Danny's Diner](https://github.com/thinhpham0702/8-Week-SQL-Challenge/blob/main/Case%20Study%20%231%20-%20Danny's%20Diner/README.md)
