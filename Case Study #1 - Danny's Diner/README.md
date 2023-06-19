@@ -353,18 +353,18 @@ At the end of January
 
 ```sql
 SELECT sa.customer_id
-	 , sa.order_date
-	 , mu.product_name
-	 , mu.price
-	 , CASE WHEN sa.order_date < me.join_date THEN 'N' 
-			WHEN sa.order_date >= me.join_date THEN 'Y'
-			ELSE 'N' END AS membership
-	FROM sales sa
-	LEFT JOIN members me
-	 ON me.customer_id = sa.customer_id
-	JOIN menu mu
-	 ON sa.product_id = mu.product_id
-	ORDER BY 1,2
+ , sa.order_date
+ , mu.product_name
+ , mu.price
+ , CASE WHEN sa.order_date < me.join_date THEN 'N' 
+		WHEN sa.order_date >= me.join_date THEN 'Y'
+		ELSE 'N' END AS membership
+FROM sales sa
+LEFT JOIN members me
+ ON me.customer_id = sa.customer_id
+JOIN menu mu
+ ON sa.product_id = mu.product_id
+ORDER BY 1,2
  ```
  
 #### Output
