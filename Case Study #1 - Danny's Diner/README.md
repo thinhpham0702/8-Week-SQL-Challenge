@@ -148,7 +148,7 @@ GROUP BY 1
 
 **Q5. Which item was the most popular for each customer?**
 
-```
+```sql
 SELECT customer_id
  , product_name
  , count_item
