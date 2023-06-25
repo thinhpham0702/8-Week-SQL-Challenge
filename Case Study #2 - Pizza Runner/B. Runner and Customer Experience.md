@@ -139,7 +139,7 @@ SELECT order_id
 FROM pizza_runner.runner_orders_temp
 WHERE distance IS NOT NULL
 GROUP BY 1,2
-ORDER BY 1,2;
+ORDER BY 2,1;
 ```
 
 #### Output:
