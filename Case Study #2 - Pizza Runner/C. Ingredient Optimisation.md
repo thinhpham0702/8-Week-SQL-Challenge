@@ -85,7 +85,7 @@ ORDER BY 2 DESC;
 **- Meat Lovers - Exclude Cheese, Bacon - Extra Mushroom, Peppers**
 
 ```sql
-    WITH extras_cte AS (
+WITH extras_cte AS (
 	SELECT e1.record_id
 	, CONCAT('Extra ', STRING_AGG(t.topping_name, ', ')) as record_options
 	FROM pizza_runner.extras e1
@@ -149,10 +149,10 @@ WITH ingredient AS (
 	SELECT record_id
 	 , pizza_name
 	 , CASE WHEN p1.topping_id IN (
-					  SELECT extras
-					  FROM pizza_runner.extras e1
-					  WHERE c.record_id = e1.record_id
-					 ) 
+				  SELECT extras
+				  FROM pizza_runner.extras e1
+				  WHERE c.record_id = e1.record_id
+				 ) 
 		  THEN CONCAT('2x', p3.topping_name)
 		  ELSE p3.topping_name
 		  END AS topping
@@ -161,10 +161,10 @@ WITH ingredient AS (
 	JOIN pizza_runner.pizza_recipes_temp p1 ON c.pizza_id = p1.pizza_id
 	JOIN pizza_runner.pizza_toppings p3 ON p3.topping_id = p1.topping_id
 	WHERE p1.topping_id NOT IN (
-							SELECT exclusions 
-							FROM pizza_runner.exclusions e2
-							WHERE e2.record_id = c.record_id)
-							)
+				SELECT exclusions 
+				FROM pizza_runner.exclusions e2
+				WHERE e2.record_id = c.record_id)
+				)
 
 SELECT record_id 
  , CONCAT(pizza_name, ': ', STRING_AGG(topping, ', ')) AS ingredient_list
@@ -201,21 +201,21 @@ WITH ingredient_used_count AS (
 	 , pizza_name 
 	 , topping_name
 	 , CASE WHEN p1.topping_id in (
-					SELECT extras
-					FROM pizza_runner.extras e1
-					WHERE c.record_id = e1.record_id
-					) THEN 2 ELSE 1 END AS times_used_topping
+				SELECT extras
+				FROM pizza_runner.extras e1
+				WHERE c.record_id = e1.record_id
+				) THEN 2 ELSE 1 END AS times_used_topping
 	FROM pizza_runner.customer_orders_temp c 
 	JOIN pizza_runner.pizza_names p2 ON c.pizza_id = p2.pizza_id
 	JOIN pizza_runner.pizza_recipes_temp p1 ON c.pizza_id = p1.pizza_id
 	JOIN pizza_runner.pizza_toppings p3 ON p3.topping_id = p1.topping_id
 	JOIN pizza_runner.runner_orders r ON c.order_id = r.order_id
 	WHERE p1.topping_id NOT IN (
-					SELECT exclusions
-					FROM pizza_runner.exclusions e2 
-					WHERE e2.record_id = c.record_id) 
-					and r.distance IS NOT NULL
-					)			
+				SELECT exclusions
+				FROM pizza_runner.exclusions e2 
+				WHERE e2.record_id = c.record_id) 
+				and r.distance IS NOT NULL
+				)			
 
 SELECT topping_name 
  , SUM(times_used_topping) AS times_used_topping
