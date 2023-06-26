@@ -147,6 +147,7 @@ FROM pizza_runner.pizza_recipes;
 ALTER TABLE
  ALTER COLUMN toppings TYPE int USING toppings:int,
  RENAME COLUMN toppings TO topping_id;
+```
 	
 <img src= "https://github.com/thinhpham0702/8-Week-SQL-Challenge/assets/136966635/9ab29172-6789-4bb0-8509-6482eba97cd5" alt="Image">
 
