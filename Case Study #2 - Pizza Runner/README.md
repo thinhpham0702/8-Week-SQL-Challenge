@@ -143,8 +143,8 @@ To make querying easier, we need to:
 ## Case Study Questions and Solutions
 - A. [Pizza Metrics](https://github.com/thinhpham0702/8-Week-SQL-Challenge/blob/main/Case%20Study%20%232%20-%20Pizza%20Runner/A.%20Pizza%20Metrics.md)
 - B. [Runner and Customer Experience](https://github.com/thinhpham0702/8-Week-SQL-Challenge/blob/main/Case%20Study%20%232%20-%20Pizza%20Runner/B.%20Runner%20and%20Customer%20Experience.md)
-- C. [Ingredient Optimisation]()
-- D. [Pricing and Ratings]
+- C. [Ingredient Optimisation](https://github.com/thinhpham0702/8-Week-SQL-Challenge/blob/main/Case%20Study%20%232%20-%20Pizza%20Runner/C.%20Ingredient%20Optimisation.md)
+- D. [Pricing and Ratings](https://github.com/thinhpham0702/8-Week-SQL-Challenge/blob/main/Case%20Study%20%232%20-%20Pizza%20Runner/D.%20Pricing%20and%20Ratings.md)
 
 
 
