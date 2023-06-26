@@ -135,7 +135,19 @@ First, take a look at `pizza_recipes` table, as we can see:
 To make querying easier, we need to:
 - Create temporary table for pizza_recipes
 - Splitting comma dilimited lists into rows
+- Changing data type for `toppings` column and rename `toppings` column to topping_id
 
+```sql
+CREATE TABLE pizza_runner.pizza_recipes_temp AS
+SELECT pizza_id
+ , TRIM(UNNEST(STRING_TO_ARRAY(toppings, ','))) AS topping_id
+FROM pizza_runner.pizza_recipes;
+```
+```sql
+ALTER TABLE
+ ALTER COLUMN toppings TYPE int USING toppings:int,
+ RENAME COLUMN toppings TO topping_id;
+	
 <img src= "https://github.com/thinhpham0702/8-Week-SQL-Challenge/assets/136966635/9ab29172-6789-4bb0-8509-6482eba97cd5" alt="Image">
 
 ***
