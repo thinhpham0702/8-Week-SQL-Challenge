@@ -85,8 +85,10 @@ Which areas of the business have the highest negative impact in sales metrics pe
 
 ## Case Study Solutions
 
-- Data Cleansing
-- SQL Solutions
+- [Data Cleansing](https://github.com/thinhpham0702/8-Week-SQL-Challenge/blob/main/Case%20Study%20%235%20-%20Data%20Mart/Data%20cleaning.md)
+- [Data Exploration](https://github.com/thinhpham0702/8-Week-SQL-Challenge/blob/main/Case%20Study%20%235%20-%20Data%20Mart/SQL%20Solutions.md)
+- [Before & After Analysis](https://github.com/thinhpham0702/8-Week-SQL-Challenge/blob/main/Case%20Study%20%235%20-%20Data%20Mart/SQL%20Solutions.md)
+- [Bonus Question](https://github.com/thinhpham0702/8-Week-SQL-Challenge/blob/main/Case%20Study%20%235%20-%20Data%20Mart/SQL%20Solutions.md)
 
 
 
