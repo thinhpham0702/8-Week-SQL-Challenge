@@ -1,163 +1,100 @@
 # 🍕Case Study #2: Pizza Runner
 <img src=  "https://8weeksqlchallenge.com/images/case-study-designs/2.png" alt="Image" width="500" height="520" >
 
-## 📚 Table of Contents
-- **Business Task**
-- **Entity Relationship Diagram**
-- **Data Cleaning**
-- **Case Study Questions and Solutions**
-
-Please keep in mind that all information about the case study has been derived from the following website [here](https://8weeksqlchallenge.com/case-study-2/)   
+Source of this case study: [https://8weeksqlchallenge.com/case-study-2/](https://8weeksqlchallenge.com/case-study-2/)   
 
 ***
 
-## 🎯 Business Task
-- Danny was attracted by an idea “80s Retro Styling and Pizza Is The Future!” while he was scrolling through his Instagram feed. He thought that pizza alone was not going to help him get seed funding to expand his new Pizza Empire, therefore, he was going to Uberize it - and so Pizza Runner was launched!
-- However, Danny had a few years of experience as a data scientist, he was very aware that data collection was going to be critical for his business’ growth.
-- He has prepared for us an entity relationship diagram of his database design but requires further assistance to clean his data and apply some basic calculations so he can better direct his runners and optimise Pizza Runner’s operations.
+## 📝Introduction
+
+Danny was scrolling through his Instagram feed when something really caught his eye - “80s Retro Styling and Pizza Is The Future!”
+
+Danny was sold on the idea, but he knew that pizza alone was not going to help him get seed funding to expand his new Pizza Empire - so he had one more genius idea to combine with it - he was going to Uberize it - and so Pizza Runner was launched!
+
+Danny started by recruiting “runners” to deliver fresh pizza from Pizza Runner Headquarters (otherwise known as Danny’s house) and also maxed out his credit card to pay freelance developers to build a mobile app to accept orders from customers.
 
 ***
 
-## Entity Relationship Diagram  
+## Available Data
+
+Because Danny had a few years of experience as a data scientist - he was very aware that data collection was going to be critical for his business’ growth.
+
+He has prepared for us an entity relationship diagram of his database design but requires further assistance to clean his data and apply some basic calculations so he can better direct his runners and optimise Pizza Runner’s operations.
+
+All datasets exist within the pizza_runner database schema - be sure to include this reference within your SQL scripts as you start exploring the data and answering the case study questions.
+
+***
+
+## 📊Entity Relationship Diagram  
 
 <img src= "https://github.com/thinhpham0702/8-Week-SQL-Challenge/assets/136966635/7ab5daa3-b679-4692-bb10-d81a6168306e" alt="Image">
 
 *** 
 
-## Data Cleaning
+## ❓Case Study Questions
 
-### Table: Customer_orders 
+**Before you start writing your SQL queries however - you might want to investigate the data, you may want to do something with some of those null values and data types in the customer_orders and runner_orders tables!**
 
-First, take a look at `customer_orders` table, as we can see:
-- In `exclusions` and `extras` columns, there are some blank spaces and null string.
-  
-<img src= "https://github.com/thinhpham0702/8-Week-SQL-Challenge/assets/136966635/0486c4ec-bf07-4529-8b3b-c05bdad76e56" alt="Image">
+### A. Pizza Metrics
+1. How many pizzas were ordered?
+2. How many unique customer orders were made?
+3. How many successful orders were delivered by each runner?
+4. How many of each type of pizza was delivered?
+5. How many Vegetarian and Meatlovers were ordered by each customer?
+6. What was the maximum number of pizzas delivered in a single order?
+7. For each customer, how many delivered pizzas had at least 1 change and how many had no changes?
+8. How many pizzas were delivered that had both exclusions and extras?
+9. What was the total volume of pizzas ordered for each hour of the day?
+10. What was the volume of orders for each day of the week?
 
-From the above table, we need to:
-- Create temporary table for customer_orders
-- Replace all blank and null string with NULL value for consistency
-- To be able to uniquely identify each pizza ordered, we have to add an `record_id` column
+### B. Runner and Customer Experience
+1. How many runners signed up for each 1 week period? (i.e. week starts 2021-01-01)
+2. What was the average time in minutes it took for each runner to arrive at the Pizza Runner HQ to pickup the order?
+3. Is there any relationship between the number of pizzas and how long the order takes to prepare?
+4. What was the average distance travelled for each customer?
+5. What was the difference between the longest and shortest delivery times for all orders?
+6. What was the average speed for each runner for each delivery and do you notice any trend for these values?
+7. What is the successful delivery percentage for each runner?
 
-```sql
-CREATE TABLE pizza_runner.customer_orders_temp AS
-SELECT order_id 
- , customer_id 
- , pizza_id 
- , CASE WHEN exclusions LIKE '%null%' OR exclusions = '' THEN NULL
-		ELSE exclusions END AS exclusions
- , CASE WHEN extras LIKE '%null%' OR extras = '' THEN NULL
-	  	ELSE extras END AS extras
- , order_time
- , row_number() OVER (ORDER BY order_id) record_id
-FROM pizza_runner.customer_orders;
-```
+### C. Ingredient Optimisation
+1. What are the standard ingredients for each pizza?
+2. What was the most commonly added extra?
+3. What was the most common exclusion?
+4. Generate an order item for each record in the customers_orders table in the format of one of the following:
+- Meat Lovers
+- Meat Lovers - Exclude Beef
+- Meat Lovers - Extra Bacon
+- Meat Lovers - Exclude Cheese, Bacon - Extra Mushroom, Peppers
+5. Generate an alphabetically ordered comma separated ingredient list for each pizza order from the customer_orders table and add a 2x in front of any relevant ingredients
+For example: "Meat Lovers: 2xBacon, Beef, ... , Salami"
+6. What is the total quantity of each ingredient used in all delivered pizzas sorted by most frequent first?
 
-<img src= "https://github.com/thinhpham0702/8-Week-SQL-Challenge/assets/136966635/21c9c916-36ec-4e38-ac86-cf72280ba7db" alt="Image">
-
-Second, we notice that both columns are related to `topping_id` column from `pizza_topping` table so they are in wrong data type, our solutions are:
-- Create temporary table for extras and exclusions.
-- Splitting the exclusions & extras comma delimited lists into rows
-- Transform their data type for consistency
-
-```sql
-CREATE TABLE pizza_runner.extras AS
-SELECT record_id
- , TRIM(UNNEST(STRING_TO_ARRAY(extras, ','))) AS extras
-FROM pizza_runner.customer_orders_temp;
-
-ALTER TABLE pizza_runner.extras
- ALTER COLUMN extras TYPE int USING extras::int;
-```
-<img src= "https://github.com/thinhpham0702/8-Week-SQL-Challenge/assets/136966635/9c574cec-4d9b-400a-9403-cb522f3b8c7b" alt="Image">
-
-```sql
-CREATE TABLE pizza_runner.exclusions AS
-SELECT record_id
- , TRIM(UNNEST(STRING_TO_ARRAY(exclusions, ','))) AS exclusions
-FROM pizza_runner.customer_orders_temp;
-
-ALTER TABLE pizza_runner.exclusions
- ALTER COLUMN exclusions TYPE int USING exclusions::int;
-```
-<img src= "https://github.com/thinhpham0702/8-Week-SQL-Challenge/assets/136966635/1934159c-582b-4730-bab0-54e6810d4366" alt="Image">
-
-*** 
-
-### Table: Runner_orders
-
-First, take a look at `runner_orders` table, as we can see:
-- In `pickup_time`, `distance`, `duration` and `cancellation` columns, there are some blank spaces and null string.
-
-<img src= "https://github.com/thinhpham0702/8-Week-SQL-Challenge/assets/136966635/80b2467f-3009-4dda-8509-ade3978aca02" alt="Image">
-
-From the above table, we need to:
-- Create temporary table for runner_orders
-- Replace all blank and null string with NULL value for consistency
-- Remove 'km' from `distance` column
-- Remove 'mins', 'minute' and 'minutes' from `duration` column
-- Changing date type for `pickup_time`, `distance` and `duration` columns for consistency.
-
-```sql
-CREATE TABLE pizza_runner.runner_orders_temp AS
-SELECT order_id
- , runner_id  
- , CASE WHEN pickup_time LIKE '%null%' OR pickup_time = '' THEN NULL
-		ELSE pickup_time END AS pickup_time
- , CASE WHEN distance LIKE '%null%' OR distance = '' THEN NULL
-	  	WHEN distance LIKE '%km' THEN TRIM(REPLACE(distance, 'km', ''))
-		ELSE distance END AS distance
- , CASE WHEN duration LIKE '%null%' OR duration = '' THEN NULL
-		WHEN duration LIKE '%mins' THEN TRIM(REPLACE(duration, 'mins', ''))
-		WHEN duration LIKE '%minute' THEN TRIM(REPLACE(duration, 'minute', ''))
-		WHEN duration LIKE '%minutes' THEN TRIM(REPLACE(duration, 'minutes', ''))
-		ELSE duration END AS duration
- , CASE WHEN cancellation LIKE '%null%' OR cancellation = '' THEN NULL
-		ELSE cancellation END AS cancellation
-FROM pizza_runner.runner_orders;
-```
-```sql
-ALTER TABLE pizza_runner.runner_orders_temp
- ALTER COLUMN pickup_time TYPE timestamp USING pickup_time::timestamp,
- ALTER COLUMN distance TYPE float USING distance::float,
- ALTER COLUMN duration TYPE int USING duration::int;
-```
-<img src= "https://github.com/thinhpham0702/8-Week-SQL-Challenge/assets/136966635/f6d20106-1b9f-4b10-ba27-b799d9602325" alt="Image">
+### D. Pricing and Ratings
+1. If a Meat Lovers pizza costs $12 and Vegetarian costs $10 and there were no charges for changes - how much money has Pizza Runner made so far if there are no delivery fees?
+2. What if there was an additional $1 charge for any pizza extras?
+- Add cheese is $1 extra
+3. The Pizza Runner team now wants to add an additional ratings system that allows customers to rate their runner, how would you design an additional table for this new dataset - generate a schema for this new table and insert your own data for ratings for each successful customer order between 1 to 5.
+4. Using your newly generated table - can you join all of the information together to form a table which has the following information for successful deliveries?
+- customer_id
+- order_id
+- runner_id
+- rating
+- order_time
+- pickup_time
+- Time between order and pickup
+- Delivery duration
+- Average speed
+- Total number of pizzas
+5. If a Meat Lovers pizza was $12 and Vegetarian $10 fixed prices with no cost for extras and each runner is paid $0.30 per kilometre traveled - how much money does Pizza Runner have left over after these deliveries?
 
 ***
 
-### Table: Pizza_recipes
-
-First, take a look at `pizza_recipes` table, as we can see:
-- In `toppings` column, there is a list of topping_id for each pizza_id separated by comma.
-
-<img src= "https://github.com/thinhpham0702/8-Week-SQL-Challenge/assets/136966635/0da60f42-a580-4405-9d17-9c876b408f68" alt="Image">
-
-To make querying easier, we need to:
-- Create temporary table for pizza_recipes
-- Splitting comma dilimited lists into rows
-- Changing data type for `toppings` column and rename `toppings` column to topping_id
-
-```sql
-CREATE TABLE pizza_runner.pizza_recipes_temp AS
-SELECT pizza_id
- , TRIM(UNNEST(STRING_TO_ARRAY(toppings, ','))) AS topping_id
-FROM pizza_runner.pizza_recipes;
-```
-```sql
-ALTER TABLE
- ALTER COLUMN toppings TYPE int USING toppings:int,
- RENAME COLUMN toppings TO topping_id;
-```
-	
-<img src= "https://github.com/thinhpham0702/8-Week-SQL-Challenge/assets/136966635/9ab29172-6789-4bb0-8509-6482eba97cd5" alt="Image">
-
-***
-
-## Case Study Questions and Solutions
-- A. [Pizza Metrics](https://github.com/thinhpham0702/8-Week-SQL-Challenge/blob/main/Case%20Study%20%232%20-%20Pizza%20Runner/A.%20Pizza%20Metrics.md)
-- B. [Runner and Customer Experience](https://github.com/thinhpham0702/8-Week-SQL-Challenge/blob/main/Case%20Study%20%232%20-%20Pizza%20Runner/B.%20Runner%20and%20Customer%20Experience.md)
-- C. [Ingredient Optimisation](https://github.com/thinhpham0702/8-Week-SQL-Challenge/blob/main/Case%20Study%20%232%20-%20Pizza%20Runner/C.%20Ingredient%20Optimisation.md)
-- D. [Pricing and Ratings](https://github.com/thinhpham0702/8-Week-SQL-Challenge/blob/main/Case%20Study%20%232%20-%20Pizza%20Runner/D.%20Pricing%20and%20Ratings.md)
+## Case Study Solutions
+- [Data Cleaning](https://github.com/thinhpham0702/8-Week-SQL-Challenge/blob/main/Case%20Study%20%232%20-%20Pizza%20Runner/Data%20Cleaning.md)
+- [Pizza Metrics](https://github.com/thinhpham0702/8-Week-SQL-Challenge/blob/main/Case%20Study%20%232%20-%20Pizza%20Runner/A.%20Pizza%20Metrics.md)
+- [Runner and Customer Experience](https://github.com/thinhpham0702/8-Week-SQL-Challenge/blob/main/Case%20Study%20%232%20-%20Pizza%20Runner/B.%20Runner%20and%20Customer%20Experience.md)
+- [Ingredient Optimisation](https://github.com/thinhpham0702/8-Week-SQL-Challenge/blob/main/Case%20Study%20%232%20-%20Pizza%20Runner/C.%20Ingredient%20Optimisation.md)
+- [Pricing and Ratings](https://github.com/thinhpham0702/8-Week-SQL-Challenge/blob/main/Case%20Study%20%232%20-%20Pizza%20Runner/D.%20Pricing%20and%20Ratings.md)
 
 
 
