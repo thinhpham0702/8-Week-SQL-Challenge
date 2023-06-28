@@ -1,6 +1,8 @@
 # 🛒Case Study #5 - Data Mart
 <img src= "https://8weeksqlchallenge.com/images/case-study-designs/5.png" alt="Image" height="520"  width="500">
 
+Source of this case study: [https://8weeksqlchallenge.com/case-study-5/](https://8weeksqlchallenge.com/case-study-5/)
+
 ## 📝Introduction
 
 Data Mart is Danny’s latest venture and after running international operations for his online supermarket that specialises in fresh produce - Danny is asking for your support to analyse his sales performance.
