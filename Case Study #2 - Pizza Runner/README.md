@@ -31,7 +31,7 @@ All datasets exist within the pizza_runner database schema - be sure to include 
 
 *** 
 
-## ❓Case Study Questions
+## ⁉️Case Study Questions
 
 **Before you start writing your SQL queries however - you might want to investigate the data, you may want to do something with some of those null values and data types in the customer_orders and runner_orders tables!**
 
@@ -89,7 +89,7 @@ For example: "Meat Lovers: 2xBacon, Beef, ... , Salami"
 
 ***
 
-## Case Study Solutions
+## ✔️Case Study Solutions
 - [Data Cleaning](https://github.com/thinhpham0702/8-Week-SQL-Challenge/blob/main/Case%20Study%20%232%20-%20Pizza%20Runner/Data%20Cleaning.md)
 - [Pizza Metrics](https://github.com/thinhpham0702/8-Week-SQL-Challenge/blob/main/Case%20Study%20%232%20-%20Pizza%20Runner/A.%20Pizza%20Metrics.md)
 - [Runner and Customer Experience](https://github.com/thinhpham0702/8-Week-SQL-Challenge/blob/main/Case%20Study%20%232%20-%20Pizza%20Runner/B.%20Runner%20and%20Customer%20Experience.md)
