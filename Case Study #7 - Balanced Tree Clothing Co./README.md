@@ -1,4 +1,7 @@
 # 🛍️Case Study #7 - Balanced Tree Clothing Co.
+<img src= "https://8weeksqlchallenge.com/images/case-study-designs/7.png" alt="Image" height="520" width="500">
+
+Source of this case study: [https://8weeksqlchallenge.com/case-study-7/](https://8weeksqlchallenge.com/case-study-7/)
 
 ## 📝Introduction
 
