@@ -13,7 +13,7 @@ FROM data_mart.clean_weekly_sales;
 |-------------|
 | Monday      |
 
-
+- Monday is used for each week_date value
 
 **2. What range of week numbers are missing from the dataset?**
 
@@ -55,7 +55,7 @@ WHERE generate_series NOT IN (SELECT DISTINCT week_number FROM data_mart.clean_w
 | 51              |
 | 52              |
 
-
+- Range 1 from 12 and range 37 from 52 are missing 
 
 **3. How many total transactions were there for each year in the dataset?**
 
@@ -74,7 +74,10 @@ ORDER BY 1;
 | 2019          | 365639285         |
 | 2020          | 375813651         |
 
-
+- In 2018, there are a total of 346.406.460 transactions
+- In 2019, there are a total of 365.639.285 transactions
+- In 2020, there are a total of 375.813.651 transactions
+- The number of yearly transactions increased every year
 
 **4. What is the total sales for each region for each month?**
 
@@ -140,8 +143,6 @@ ORDER BY 1,2;
 | USA           | 8            | 712002790  |
 | USA           | 9            | 110532368  |
 
-
-
 **5. What is the total count of transactions for each platform**
 
 ```sql
@@ -158,7 +159,9 @@ ORDER BY 2;
 | Shopify  | 5925169           |
 | Retail   | 1081934227        |
 
-
+- Retail has a total of 1.081.934.227 transactions
+- Shopify has a total of 5.925.169 transactions
+- Platform Retail has more transactions than Shopify.
 
 **6. What is the percentage of sales for Retail vs Shopify for each month?**
 
@@ -206,7 +209,7 @@ ORDER BY 2;
 | Retail   | 9            | 97.38           |
 | Shopify  | 9            | 2.62            |
 
-
+- Retail always contributes to total revenue more than Shopify, accounting for over 97% from March to September.
 
 **7. What is the percentage of sales by demographic for each year in the dataset?**
 
@@ -250,7 +253,6 @@ ORDER BY 2,1;
 | unknown     | 2020          | 38.55     |
 
 
-
 **8. Which age_band and demographic values contribute the most to Retail sales?**
 
 ```sql
@@ -275,7 +277,7 @@ ORDER BY 3 DESC
 | Middle Aged  | Couples     | 1854160330  | 4.68            |
 | Young Adults | Families    | 1770889293  | 4.47            |
 
-
+- Unknown age_band and unknown demographic contribute the most to Retail sales with 40.52%
 
 **9. Can we use the avg_transaction column to find the average transaction size for each year for Retail vs Shopify? If not - how would you calculate it instead?**
 
@@ -297,9 +299,6 @@ ORDER BY 1,2;
 | 2019          | Shopify  | 183                  |
 | 2020          | Retail   | 36                   |
 | 2020          | Shopify  | 179                  |
-
-
-
 
 ***
     
