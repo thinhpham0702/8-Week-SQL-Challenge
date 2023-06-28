@@ -34,7 +34,7 @@ Danny has shared with you 3 key datasets for this case study:
 
 ***
 
-## ❓Case Study Questions
+## ⁉️Case Study Questions
 
 1. What is the total amount each customer spent at the restaurant?
 2. How many days has each customer visited the restaurant?
@@ -63,7 +63,8 @@ Danny also requires further information about the ranking of customer products, 
 
 ![1](https://github.com/thinhpham0702/8-Week-SQL-Challenge/assets/136966635/9760f44f-a24a-42cb-b0d9-fccde09dc6f1)
 
-### Here is my [solution](https://github.com/thinhpham0702/8-Week-SQL-Challenge/blob/main/Case%20Study%20%231%20-%20Danny's%20Diner/SQL_solution.md) 
+## ✔️Case Study Solutions
+Here is my [solution](https://github.com/thinhpham0702/8-Week-SQL-Challenge/blob/main/Case%20Study%20%231%20-%20Danny's%20Diner/SQL_solution.md) 
 
  
 
