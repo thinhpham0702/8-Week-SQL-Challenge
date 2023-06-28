@@ -410,9 +410,11 @@ FROM (
 | 2018          | 6396562317 | 6500818510 | 104256193   | 1.63        |
 | 2019          | 6883386397 | 6862646103 | -20740294   | -0.30       |
 | 2020          | 7126273147 | 6973947753 | -152325394  | -2.14       |
-- There was a downward trend in sales 
 
-
+- In 2018, after the changes, sales increased by 1.63%
+- In the other hand, in 2019 and 2020, Data Mart saw a decrease in sales by 0.3% and 2.14, respectively.
+- It could be seen that customers prefered the previous version packaging or they were not aware of the changes.
+  
 ## Bonus Question
 **Which areas of the business have the highest negative impact in sales metrics performance in 2020 for the 12 week before and after period?**
 - region
@@ -458,8 +460,8 @@ ORDER BY sale_change
 | SOUTH AMERICA | 213036207  | 208452033  | -4584174    | -2.15       |
 | EUROPE        | 108886567  | 114038959  | 5152392     | 4.73        |
 
-
-
+- OCEANIA had the highest negative impact in sales performance in 2020 for the 12-week period after the changes.
+- Meanwhile, EUROPE had positive effect in sales performance.
 ### - platform
 
 ```sql
@@ -492,7 +494,8 @@ ORDER BY sale_change
 | Retail   | 6906861113 | 6738777279 | -168083834  | -2.43       |
 | Shopify  | 219412034  | 235170474  | 15758440    | 7.18        |
 
-
+- The highest negative impact in sales metrics performance in 2020 for the 12 week before and after period was Retail, corresponding to a decrease of 2.43%
+- On the other hand, Shopify had positive impact in sales.
 
 ### - age_band
 
@@ -528,7 +531,7 @@ ORDER BY sale_change
 | Middle Aged  | 1164847640 | 1141853348 | -22994292   | -1.97       |
 | Young Adults | 801806528  | 794417968  | -7388560    | -0.92       |
 
-
+- The highest negative impact in sales metrics performance in 2020 for the 12 week before and after period was Unknown age_band, corresponding to a decrease of 3.34%
 
 ### - demographic
 
@@ -563,7 +566,7 @@ ORDER BY sale_change
 | Families    | 2328329040 | 2286009025 | -42320015   | -1.82       |
 | Couples     | 2033589643 | 2015977285 | -17612358   | -0.87       |
 
-
+- The highest negative impact in sales metrics performance in 2020 for the 12 week before and after period was Unknown demographic, corresponding to a decrease of 3.34%
 
 ### - customer_type
 
@@ -598,5 +601,5 @@ ORDER BY sale_change
 | Guest         | 2573436301 | 2496233635 | -77202666   | -3.00       |
 | New           | 862720419  | 871470664  | 8750245     | 1.01        |
 
-
-
+- The highest negative impact in sales metrics performance in 2020 for the 12 week before and after period was Guest, corresponding to a decrease of 3.00%
+- Whereas, only New customer had positive effect.
