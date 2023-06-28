@@ -8,3 +8,5 @@ I would like to send a big thank you to [Data With Danny](https://www.linkedin.c
 
 - [Case Study #1 - Danny's Diner](https://github.com/thinhpham0702/8-Week-SQL-Challenge/blob/main/Case%20Study%20%231%20-%20Danny's%20Diner/README.md)
 - [Case Study #2 - Pizza Runner](https://github.com/thinhpham0702/8-Week-SQL-Challenge/tree/main/Case%20Study%20%232%20-%20Pizza%20Runner)
+- [Case Study #5 - Data Mart](https://github.com/thinhpham0702/8-Week-SQL-Challenge/tree/main/Case%20Study%20%235%20-%20Data%20Mart)
+- [Case Study #7 - Balanced Tree Clothing Co.](https://github.com/thinhpham0702/8-Week-SQL-Challenge/tree/main/Case%20Study%20%237%20-%20Balanced%20Tree%20Clothing%20Co.)
