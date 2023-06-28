@@ -129,8 +129,8 @@ Use a single SQL query to transform the product_hierarchy and product_prices dat
 
 ### ✔️Case Study Solutions
 
-- High Level Sales Analysis
-- Transaction Analysis
-- Product Analysis
-- Reporting Challenge
-- Bonus Challenge
+- [High Level Sales Analysis](https://github.com/thinhpham0702/8-Week-SQL-Challenge/blob/main/Case%20Study%20%237%20-%20Balanced%20Tree%20Clothing%20Co./SQL%20Solutions.md) 
+- [Transaction Analysis](https://github.com/thinhpham0702/8-Week-SQL-Challenge/blob/main/Case%20Study%20%237%20-%20Balanced%20Tree%20Clothing%20Co./SQL%20Solutions.md) 
+- [Product Analysis](https://github.com/thinhpham0702/8-Week-SQL-Challenge/blob/main/Case%20Study%20%237%20-%20Balanced%20Tree%20Clothing%20Co./SQL%20Solutions.md) 
+- [Reporting Challenge](https://github.com/thinhpham0702/8-Week-SQL-Challenge/blob/main/Case%20Study%20%237%20-%20Balanced%20Tree%20Clothing%20Co./Monthy%20Report%20Script.md)
+- [Bonus Challenge](https://github.com/thinhpham0702/8-Week-SQL-Challenge/blob/main/Case%20Study%20%237%20-%20Balanced%20Tree%20Clothing%20Co./SQL%20Solutions.md) 
